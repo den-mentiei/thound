@@ -1,0 +1,13 @@
+[package]
+name       = "thound"
+version    = "0.1.0"
+authors    = ["Denys Mentiei <endden@gmail.com>"]
+license    = "MIT"
+edition    = "2021"
+repository = "https://github.com/den-mentiei/thound"
+keywords   = ["winsdk", "toolchain", "vc"]
+categories = ["development-tools", "development-tools::build-utils"]
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]

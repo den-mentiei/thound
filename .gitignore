@@ -1,0 +1,5 @@
+# will have compiled files and executables
+target/
+
+# We are making a library here.
+Cargo.lock
