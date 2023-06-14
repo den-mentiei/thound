@@ -1,11 +1,13 @@
 # T H O U N D
 
 [![Latest Version]][crates.io]
+[![MIT licensed][mit-badge]][mit-url]
 [![API](https://docs.rs/thound/badge.svg)][docs.rs]
 
 [Latest Version]: https://img.shields.io/crates/v/thound.svg
 [crates.io]: https://crates.io/crates/thound
 [docs.rs]: https://docs.rs/thound
+[mit-badge]: https://img.shields.io/badge/license-MIT-blue.svg
 [mit-url]: https://github.com/den-mentiei/thound/blob/main/LICENSE
 
 ## Overview
