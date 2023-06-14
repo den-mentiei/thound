@@ -38,6 +38,29 @@ fn main() {
 }
 ```
 
+...and it will emit something like the following:
+
+```
+Some(
+    Info {
+        sdk: Some(
+            SdkInfo {
+                major_version: 10,
+                root: "C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.22000.0",
+                um_lib_path: "C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.22000.0\\um\\x64",
+                ucrt_lib_path: "C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.22000.0\\ucrt\\x64",
+            },
+        ),
+        toolchain: Some(
+            ToolchainInfo {
+                exe_path: "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.36.32532\\bin\\Hostx64\\x64",
+                lib_path: "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.36.32532\\lib\\x64",
+            },
+        ),
+    },
+)
+```
+
 ## Implementation notes
 
 One of the goals for this implementation was to be as dependency-free

@@ -33,6 +33,8 @@
 //! If your need is bigger than this, you might go check the
 //! [cc](https://crates.io/crates/cc) crate.
 
+#![deny(missing_docs)]
+
 #[cfg(not(target_os = "windows"))]
 compile_error!("This crate only supports Windows.");
 
@@ -79,7 +81,7 @@ pub struct SdkInfo {
 ///
 /// **IMPORTANT**: If you have multiple versions of Visual Studio
 /// installed, we return the first one, rather than the newest. This
-/// solves the baspic problem for now, but can be easily expanded in
+/// solves the basic problem for now, but can be easily expanded in
 /// the future.
 #[derive(Debug)]
 pub struct ToolchainInfo {
@@ -250,9 +252,9 @@ const SDK_VERSIONS: [(u8, &str, fn(&Path) -> Option<Version>); 2] = [
 
 fn find_windows_kit() -> Option<(u8, PathBuf)> {
 	// Information about the Windows 10 and Windows 8 development kits
-    // is stored in the same place in the registry. We open a key to
-    // that place, first checking preferentially for a Windows 10 kit,
-    // then, if that's not found, a Windows 8 kit.
+	// is stored in the same place in the registry. We open a key to
+	// that place, first checking preferentially for a Windows 10 kit,
+	// then, if that's not found, a Windows 8 kit.
 	let mut main_key = RegKey::zeroed();
 	let err = unsafe {
 		RegOpenKeyExA(
