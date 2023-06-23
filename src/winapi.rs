@@ -107,6 +107,7 @@ extern "stdcall" {
 #[link(name = "Ole32")]
 extern "stdcall" {
 	pub fn CoInitializeEx(pvReserved: LPVOID, dwCoInit: DWORD) -> HRESULT;
+	pub fn CoUninitialize();
 	pub fn CoCreateInstance(
 		rclsid: REFCLSID,
 		pUnkOuter: LPUNKNOWN,
@@ -399,4 +400,30 @@ pub(crate) fn reg_query_string_value(key: &RegKey, sub_key: &str) -> Option<Path
 
 	let root = OsString::from_wide(&value[..]);
 	Some(root.into())
+}
+
+// COM initialization seems to be a ref-count of some kind under the
+// hood, so we need to make sure we play by the rules and uninit it.
+pub(crate) struct ComScope;
+
+impl ComScope {
+	#[must_use]
+	pub fn start() -> Option<Self> {
+		let hr = unsafe { CoInitializeEx(null_mut(), COINIT_MULTITHREADED) };
+		// S_FALSE means COM has been already initialized.
+		if hr != S_OK && hr != S_FALSE {
+			return None;
+		}
+
+		Some(ComScope)
+	}
+}
+
+impl Drop for ComScope {
+	fn drop(&mut self) {
+		// A thread must call CoUninitialize once for each successful
+		// call it has made to the CoInitialize or CoInitializeEx
+		// function, including any call that returns S_FALSE.
+		unsafe { CoUninitialize() };
+	}
 }

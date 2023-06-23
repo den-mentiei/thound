@@ -1,6 +1,6 @@
 [package]
 name        = "thound"
-version     = "0.1.0"
+version     = "0.1.1"
 authors     = ["Denys Mentiei <endden@gmail.com>"]
 description = "Finds the folders with VC toolchain and Windows SDK"
 license     = "MIT"

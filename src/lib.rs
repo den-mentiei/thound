@@ -123,11 +123,7 @@ pub fn find_vc_and_windows_sdk() -> Option<Info> {
 }
 
 fn find_vc_toolchain() -> Option<ToolchainInfo> {
-	let hr = unsafe { CoInitializeEx(null_mut(), COINIT_MULTITHREADED) };
-	// S_FALSE means COM has been already initialized.
-	if hr != S_OK && hr != S_FALSE {
-		return None;
-	}
+	let _com = ComScope::start()?;
 
 	let mut config = null_mut();
 	let status = unsafe {

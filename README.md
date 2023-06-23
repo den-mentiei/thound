@@ -23,7 +23,7 @@ Add `thound` to your `Cargo.toml`:
 
 ``` toml
 [dependencies]
-thound = "0.1.0"
+thound = "0.1"
 ```
 
 ## Usage
