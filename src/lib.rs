@@ -3,7 +3,7 @@
 //! The purpose of this is to find the folders that contain libraries
 //! you may need to link against, on Windows, if you are linking with
 //! any compiled C or C++ code. This will be necessary for many
-//! non-C++ programming language environments that wnat to provide
+//! non-C++ programming language environments that want to provide
 //! compatibility.
 //!
 //! We find the following:
